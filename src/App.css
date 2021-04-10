@@ -1,0 +1,246 @@
+.App {
+  text-align: center;
+  width: 50%;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+
+
+#html{
+  background-color: rgb(0, 0, 0);
+
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+#VideoCanvas video{
+ 
+  position:absolute;
+  bottom:0;
+  left:-6%;
+  width: 30%; 
+  height: 30%;
+  background-color: rgb(0, 0, 0);
+  z-index: -1;
+  
+}
+ 
+#VideoCanvas canvas{
+ 
+  position:absolute;
+  bottom:0;
+  left:-6%;
+  width: 0%; 
+  height: 0%;
+  background-color: rgb(0, 0, 0);
+  
+}
+
+
+#root{
+  width: 0px;
+  height: 0px;
+  background-color: rgb(0, 0, 0);
+
+}
+
+#wrapper{
+  width: 50%;
+  height: 50%;
+  float:left;
+  z-index: 3;
+  visibility: hidden;
+
+}
+
+#wrapper2{
+  width: 50%;
+  height: 50%;
+  float:right;
+  background-color: rgb(0, 0, 0);
+  z-index: 3;
+  visibility: hidden;
+
+}
+
+#video3{
+  width: 35%; 
+  height: 35%;
+    z-index: 3;
+
+}
+
+#video1{
+  width: 100%; 
+  height: 100%;
+    background: #000000;
+    z-index: -2;
+    position: fixed;
+top:0%;
+left:0%;
+
+
+}
+
+#video2{
+    width: 30%; 
+    height: 30%;
+    z-index: 3;
+
+}
+
+
+
+#backgroundcall{
+  width: 100%; 
+  height: 100%;
+  background-color: green;
+
+  
+}
+
+#video_div3{
+  z-index: 3;
+  display: inline-block;
+
+}
+
+#video_div1 {
+  display: inline-block;
+  z-index: -1;
+
+  }
+
+  #video_div2{
+float:right;
+width: 100%;
+height: 100%;
+  }
+
+    #AskForMask{
+      width: 100%; 
+    height: 100%;
+    background: #000000;
+    position: fixed;
+        top: 0;
+        opacity: 1;
+        z-index: 2;
+       
+    }
+
+    #PickUpCall{
+    width: 100%; 
+    height: 100%;
+    background: #00c9e4;
+    position: fixed;
+        top: 0;
+        opacity: 1;
+        z-index: 0;
+        visibility: visible;
+    }
+
+    #pick_up{
+      position: fixed;
+      height: 65px;
+      width: 65px;
+      border-radius: 50%;
+      border: 1px solid #000;
+      top: 70%;
+      right: 56%;
+      }
+
+     
+
+      #hang_up{
+        position: fixed;
+        height: 65px;
+        width: 65px;
+        border-radius: 50%;
+        border: 1px solid #000;
+        top: 70%;
+        right: 36%;
+        }
+
+       
+    
+          #hang_up2{
+            position: fixed;
+            height: 65px;
+            width: 65px;
+            border-radius: 50%;
+            border: 1px solid #000;
+            top: 70%;
+            right: 36%;
+            }
+
+        #caller{
+          width: 200px;
+          height: 200px;
+          position: fixed;
+          border-radius: 50%;
+          border: 1px solid #000;
+          top: 20%;
+          right: 41%;
+          }
+
+    #whitetext{
+      position: fixed;
+      top: 50%;
+      right: 20%;
+      z-index: 0;
+      width: 50%;
+      color: #ffffff;
+      -webkit-box-shadow: 0 8px 6px -6px #333;
+      -moz-box-shadow: 0 8px 6px -6px #333;
+      box-shadow: 0 8px 6px -6px #333;   
+     }
+
+     #ShareStory{
+      position: fixed;
+      top: 40%;
+      right: 20%;
+      z-index: 50000000000;
+      width: 50%;
+      color: #ffffff;
+      -webkit-box-shadow: 0 8px 6px -6px #333;
+      -moz-box-shadow: 0 8px 6px -6px #333;
+      box-shadow: 0 8px 6px -6px #333;
+     }
+
+
+     #uploadvideo{
+      position: fixed;
+      top: 30%;
+      right: 20%;
+      z-index: 50000000000;
+      width: 50%;
+      color: #ffffff;
+      -webkit-box-shadow: 0 8px 6px -6px #333;
+      -moz-box-shadow: 0 8px 6px -6px #333;
+      box-shadow: 0 8px 6px -6px #333;
+     }
+     
+    
