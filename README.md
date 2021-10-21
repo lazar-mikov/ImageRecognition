@@ -1,3 +1,20 @@
+About the Project
+
+This is the code for the project Monument of a Pandemic, an interactive documentary film about Covid.
+The film uses AI image recognition developed with python in order to detect if a person is wearing or not wearing a mask.
+If the person is wearing a mask, it triggers a simulated zoom call and plays videos.
+
+The videos in this experimental film are pulled directly from Vimeo.
+It uses the Vimeo API to achieve video streaming from Vimeo.
+Users can also record and upload their videos directly to Vimeo from the website.
+
+Furthermore, the project uses the laptop camera and it features the viewer in the simulated zoom call.
+Pay Pal button for donations integrated in the lower part of the page.
+
+Currently the project is hosted at: https://maskonly-demo.com/
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
