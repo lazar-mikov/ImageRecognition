@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MediaCapture and Streams API</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="sharestory.css">
+</head>
+<body>
+
+
+    <main>
+        
+        <button id="btnStart">START RECORDING</button><br/>
+        <button id="btnStop">STOP RECORDING</button>
+        <video id="vid1" controls muted="muted"></video>
+        
+        <video id="vid2" controls></video>
+        
+
+        <div class="container">
+        
+            <div id="progress-container" class="progress">
+                <div id="progress" class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="46" aria-valuemin="0" aria-valuemax="100" style="width: 0%">&nbsp;0%
+                </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                      <div id="results"></div>
+                    </div>
+                  </div>
+              <div class="col-md-4">
+                
+                <button id="uploadvideo">Upload</button>
+    
+            </div>
+        <!-- could save to canvas and do image manipulation and saving too -->
+    </main> 
+
+    
+
+
+    
+       
+    <script type="text/javascript" >
+        
+        let constraintObj = { 
+            audio: true, 
+            video: { 
+                facingMode: "user", 
+                width: { min: 640, ideal: 1280, max: 1920 },
+                height: { min: 480, ideal: 720, max: 1080 } 
+            } 
+        }; 
+        // width: 1280, height: 720  -- preference only
+        // facingMode: {exact: "user"}
+        // facingMode: "environment"
+        
+        //handle older browsers that might implement getUserMedia in some way
+        if (navigator.mediaDevices === undefined) {
+            navigator.mediaDevices = {};
+            navigator.mediaDevices.getUserMedia = function(constraintObj) {
+                let getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+                if (!getUserMedia) {
+                    return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
+                }
+                return new Promise(function(resolve, reject) {
+                    getUserMedia.call(navigator, constraintObj, resolve, reject);
+                });
+            }
+        }else{
+            navigator.mediaDevices.enumerateDevices()
+            .then(devices => {
+                devices.forEach(device=>{
+                    console.log(device.kind.toUpperCase(), device.label);
+                    //, device.deviceId
+                })
+            })
+            .catch(err=>{
+                console.log(err.name, err.message);
+            })
+        }
+
+        navigator.mediaDevices.getUserMedia(constraintObj)
+        .then(function(mediaStreamObj) {
+            //connect the media stream to the first video element
+            let video = document.querySelector('video');
+            if ("srcObject" in video) {
+                video.srcObject = mediaStreamObj;
+            } else {
+                //old version
+                video.src = window.URL.createObjectURL(mediaStreamObj);
+            }
+            
+            video.onloadedmetadata = function(ev) {
+                //show in the video element what is being captured by the webcam
+                video.play();
+            };
+            
+            //add listeners for saving video/audio
+            let start = document.getElementById('btnStart');
+            let stop = document.getElementById('btnStop');
+            let vidSave = document.getElementById('vid2');
+            let uploadvid = document.getElementById('uploadvideo')
+            let mediaRecorder = new MediaRecorder(mediaStreamObj);
+            let chunks = [];
+            let blob = new Blob;
+            
+            start.addEventListener('click', (ev)=>{
+                mediaRecorder.start();
+                console.log(mediaRecorder.state);
+            })
+            stop.addEventListener('click', (ev)=>{
+                mediaRecorder.stop();
+                console.log(mediaRecorder.state);
+            });
+            mediaRecorder.ondataavailable = function(ev) {
+                chunks.push(ev.data);
+            }
+            mediaRecorder.onstop = (ev)=>{
+                videoblob = new Blob(chunks, { 'type' : 'video/mp4;' });
+                console.log(blob);
+                console.log(blob.chunks);
+                chunks = [];
+                console.log(chunks);
+
+                let videoURL = window.URL.createObjectURL(videoblob);
+                console.log(videoURL);
+
+                vidSave.src = videoURL;
+
+            }
+
+            uploadvid.addEventListener('click', (ev)=>{
+
+
+            new VimeoUpload({
+                name: "UserVideo",
+                description: "A video that will be featured in the interactive documentart Monument of a Pandemic",
+                file: videoblob,
+                token: "c058529c99ced7dbf77ff7c773a0522b",
+                onError: function(data) {
+                    showMessage('<strong>Error</strong>: ' + JSON.parse(data).error, 'danger')
+                },
+                onProgress: function(data) {
+                    updateProgress(data.loaded / data.total)
+                },
+                onComplete: function(videoId, index) {
+                    var url = 'https://vimeo.com/' + videoId
+
+                    if (index > -1) {
+                        /* The metadata contains all of the uploaded video(s) details see: https://developer.vimeo.com/api/endpoints/videos#/{video_id} */
+                        url = this.metadata[index].link //
+
+                        /* add stringify the json object for displaying in a text area */
+                        var pretty = JSON.stringify(this.metadata[index], null, 2)
+
+                        console.log(pretty) /* echo server data */
+                    }
+
+                    showMessage('<strong>Upload Successful</strong>: check uploaded video @ <a href="' + url + '">' + url + '</a>. Open the Console for the response details.')
+                }
+              }).upload()
+
+
+               function showMessage(html, type) {
+                /* hide progress bar */
+                document.getElementById('progress-container').style.display = 'none'
+
+                /* display alert message */
+                var element = document.createElement('div')
+                element.setAttribute('class', 'alert alert-' + (type || 'success'))
+                element.innerHTML = html
+                results.appendChild(element)
+            }
+            
+            function handleDragOver(evt) {
+            evt.stopPropagation()
+            evt.preventDefault()
+            evt.dataTransfer.dropEffect = 'copy'
+        }
+
+        /**
+         * Updat progress bar.
+         */
+        function updateProgress(progress) {
+            progress = Math.floor(progress * 100)
+            var element = document.getElementById('progress')
+            element.setAttribute('style', 'width:' + progress + '%')
+            element.innerHTML = '&nbsp;' + progress + '%'
+        }
+        /**
+         * Wire up drag & drop listeners once page loads
+         */
+        document.addEventListener('DOMContentLoaded', function() {
+            var dropZone = document.getElementById('drop_zone')
+            var browse = document.getElementById('browse')
+            dropZone.addEventListener('dragover', handleDragOver, false)
+            dropZone.addEventListener('drop', handleFileSelect, false)
+            browse.addEventListener('change', handleFileSelect, false)
+        })
+
+
+    })
+
+        })
+        .catch(function(err) { 
+            console.log(err.name, err.message); 
+        });
+
+
+        var SDown = false;
+        var SUp = false;
+        var VidoneDown = false;
+        var VidoneUP = false;
+        var Start = document.getElementById("btnStart");
+        var Stop = document.getElementById("btnStop");
+        var VideoRecording = document.getElementById("vid1");
+        var RecordedVideo = document.getElementById("vid2");
+
+        var StartDownFunction = (function() {
+    return function() {
+        if (!SDown) {
+            SDown = true;
+document.getElementById("btnStart").style.zIndex = "3";
+document.getElementById("btnStop").style.zIndex = "4";
+document.getElementById("vid1").style.zIndex = "1";
+document.getElementById("vid2").style.zIndex = "0";
+var SDown = false;
+        }
+    };
+})();
+
+Start.addEventListener("click", function() {
+    StartDownFunction();
+})
+
+var StartUpFunction = (function() {
+    return function() {
+        if (!SUp) {
+            SUp = true;
+document.getElementById("btnStart").style.zIndex = "4";
+document.getElementById("btnStop").style.zIndex = "3";
+document.getElementById("vid1").style.zIndex = "0";
+document.getElementById("vid2").style.zIndex = "1";
+var SUp = false;
+
+        }
+    };
+})();
+
+Stop.addEventListener("click", function() {
+    StartUpFunction();
+})
+
+</script>
+   
+        /*********************************
+        getUserMedia returns a Promise
+        resolve - returns a MediaStream Object
+        reject returns one of the following errors
+        AbortError - generic unknown cause
+        NotAllowedError (SecurityError) - user rejected permissions
+        NotFoundError - missing media track
+        NotReadableError - user permissions given but hardware/OS error
+        OverconstrainedError - constraint video settings preventing
+        TypeError - audio: false, video: false
+        *********************************/
+       
+
+
+        
+        
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/websemantics/bragit/0.1.2/bragit.js"></script>
+<script type="text/javascript" src="./vimeo-upload.js"></script>
+
+    
+</body>
+</html>

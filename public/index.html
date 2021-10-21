@@ -1,17 +1,35 @@
 <!DOCTYPE html>
 <html lang="en" id='html'>
   <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@300&display=swap" rel="stylesheet">
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    
     <meta name="theme-color" content="#000000" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <meta
       name="description"
       content="Web site created using create-react-app"
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel='stylesheet' href='./demo/src/assets/scss/app.scss' type='text/css' media='all' />
+    
+    <link rel='stylesheet' href='./demo/src/assets/scss/fonts.scss' type='text/css' media='all' />
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="style.css">
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -27,54 +45,248 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
-  </head>
-  <body>
+   </head>
+    <body>
+
     <noscript>You need to enable JavaScript to run this app.</noscript>
 
-   <div id="AskForMask">
-     <div id='whitetext'>
-      <p><b>DESCRIPTION OF PROJECT
-        <br>
-        PLEASE TURN ON YOUR CAMERA AND PUT ON A FACE MASK TO CONTINUE WATCHING THIS FILM</b></p>
-    </div>
-   </div>
+   
+    <div class="loader-wrapper">
+      <span class="loader"><img src="Sanitizer Grey_1.gif" class="loader-inner"></span></span>
+  </div>
+  
 
-   <div id="PickUpCall">
-    <input type="image" src="pick_up.jpg"  name="" class="" id="pick_up" />
-    <input type="image" src="hang_up.png" name="" class="" id="hang_up" />
-    <img src="caller.jpg" id="caller" >
-    <audio id="Call_Ringtone">
-      <source src="ringtone_call.mp3" type="audio/mpeg">
-    </audio>
-    
-   </div>
   
-    <div id="root" ></div>
-  
-    <div id='backgroundcall'>
-    <div id="wrapper">
-       <div id="video_div3">
-      <video id="video3"  type="video/mp4" src='3.mp4'></video>
+
+     
+  <div id="AskForMask" >
+       <p id="title">MONUMENT<br>
+              OF A <br>
+          PANDEMIC
+          <img id="plane" src="syringe.png" />
+        </p>
+
+
+
+          <p id="projectdescription">
+            This is an interactive documentary about COVID19. <br>
+            It uses AI recognition to interact with the viewers 
+            and it only plays if you are wearing a face mask. 
+            To see the film, put on a face mask 
+          and let the camera scan you.
+           <br>
+           
+           The film is made by viewers 
+           that have shared their COVID story. 
+            To become part of the film,
+             record and <a target="_blank" rel="noopener noreferrer" href="./recordvideo.html">share</a> your story with us.       </p>
+             <script>
+             function myFunction() {
+              location.replace("./recordvideo.html")
+            }
+          </script>
+             <div class="container">
+              <div id="one">1. Allow Camera Acess <br>
+                <img id="description_img" src="webcam-desc.png" alt="Snow" >
+              </div>
+              <div id="two"><p id="putonmask">2.Put On A Medical Mask</p>
+                <input type="image" src="pick_up.jpg"  name="" class="" id="pick_up" />
+                <input type="image" src="hang_up.png" name="" class="" id="hang_up" />
+
+                <img src="face-mask-desc.png" id="description_img_move" alt="Snow" >
+              </div>
+              
+              <div id="three">3. Let The Camera Scan You
+                <img src="scan-desc.png" id="description_img" alt="Snow" >
+
+              
+                <br>
+                  <audio id="Call_Ringtone">
+                  <source src="ringtone_call.mp3" type="audio/mpeg">
+                  </audio>
         </div>
-            <div  class='video_div2' id='video_div2'>
-        <video id="video2"   src='2.mp4'></video>
+             
+              
+
             </div>
-            <div  class='video_div1'   id='video_div1'>
-              <video id="video1" class="MainVideo"  src='1.mp4'></video>
+
+            <div id="bottomrow" class="row">
+              <div class="column" >
+                <h2 id="h2description">Tickets and Sponsorships</h2>
+                <p id="pdescription">Although we aim to keep the film free for everyone,
+                  we have suggested viewing prices depending on your circumstances.
+                  By purchasing a ticket you help our team create more content 
+                  as well as help with the fight against COVID-19 by supporting the promotion of our documentary.
+                </p>
+                  <br>
+                  <div id="rates">
+                    <input class="pdescription" type="radio" id="twofifty" name="fav_language" value="NHVZGCK85VR28">
+                    <label class="pdescription" for="twofifty">Regular Ticket - 2.50$</label><br>
+                    <input class="pdescription" type="radio" id="five" name="fav_language" value="CTA5V87YA4GFW">
+                    <label class="pdescription" for="five">Fan Ticket - 5.00$</label><br>
+                    <input class="pdescription" type="radio" id="twentyfive" name="fav_language" value="MFGNS3B2EG45N">
+                    <label class="pdescription" for="twentyfive">Covid Fighter - 25.00$</label>
+                   <br>
+                    <input class="pdescription" type="radio" id="hundred" name="fav_language" value="XBHJV5ZAY4RVN">
+                    
+                    <label class="pdescription" for="hundred">Official Supporter - 100$</label>
+                  </div>
+                  <br>
+                  <form id="paypalbtn" action="https://www.paypal.com/donate" method="post" target="_top">
+                    <input id="paypal" type="hidden" name="hosted_button_id" value="" />
+                    <input type="image" src="https://www.paypalobjects.com/en_US/DK/i/btn/btn_donateCC_LG.gif"  name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+                    <img alt=""  src="https://www.paypal.com/en_DE/i/scr/pixel.gif" width="1" height="1" />
+                    </form>
+                   <br>
+                   
+<p id="pdescription">
+                  Official supporters will be listed in the credits of the website.
+                  For larger donations or official sponsorships and advertisments
+                  please contact us personally.
+                </p>
+                <h2 id="h2description" >Credits</h2>
+                <p id="pdescription"></p>
+              </div>
+              <div class="column" >
+                <h2 id="h2description" >Share </h2>
+                <p id="pdescription">By sharing this documentary you help with the longterm fight against COVID-19. 
+                     <br>
+                     
+                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                <div class="addthis_inline_share_toolbox"></div>
+            
+                </p>
+
+                <h2 id="h2description">About The Project</h2>
+                <p id="pdescription">
+                  Monument of a Pandemic is an interactive documentary about the
+                  COVID-19 pandemic. The film can only be seen if the
+                  viewer is wearing a face mask, otherwise, the video
+                  will not play.
+                  To achieve this, the project uses AI object recognition
+                  to detect whether the viewer is wearing a mask
+                  and plays the film accordingly.
+                  The aim of the AI object recognition model is to make
+                  the audience an essential part of the experience,
+                  as the media only becomes available if they interact
+                  with it. In this case, making the viewers wear a mask is
+                  a reflection of the current healthcare regulations.
+                  Furthermore, the viewers can become part of the film by
+                  recording sharing their covid story. This also makes this project
+                  a participatory documentary as everyone is given the opportunity to
+                  share their voice.
+
+
+                </p>
+                <h2 id="h2description">Contact</h2>
+                <p id="pdescription">
+                  Want to get in touch with us?
+                  We are looking forward to hearing your ideas and suggestions regarding our work or future projects.
+
+
+                <br>Feel free to send an email at lazarmikov@gmail.com
+                </p>
+              </div>
+            </div>
+
+    </div>
+
+
+         
+
+         
+          
+   
+   
+       
+
+
+
+
+     
+
+
+
+      
+
+         
+
+
+      
+     <div id="PickUpCall-phone" >
+      <input type="image" src="pick_up.jpg"  name="" class="" id="pick_up-phone" />
+      <input type="image" src="hang_up.png" name="" class="" id="hang_up-phone" />
+      <img src="caller.jpg" id="caller-phone" >
+     </div>
+
+     
+  
+      <div id='backgroundcall'>
+      <div id="wrapper" class="contenidovid">
+        
+        <div id="video-wrapper-2" class="video-wrapper">
+        
+        <div     id='video2' >
+          <a id="a2" href="#" role='button'></a>
+        </div>
+      
+        <p id="title2" style="color:red; position: relative; height: 5px; bottom:0px; z-index: -1;"></p>
+      </div>
+    
+      <div  id="video-wrapper-3"  class="video-wrapper">
+              <div     id='video3' >
+                <a id="a3" href="#" role='button'></a>
+
+             </div>
+             <p id="title3" style="color:red; position: relative; height: 5px; bottom:0px; z-index: -1;"></p>
+
+     </div>
+
+     <div id="video-wrapper-4" class="video-wrapper">
+      <div     id='video4' >
+        <a id="a4" href="#" role='button'></a>
+
+     </div>
+     <p id="title4" style="color:red; position: relative; height: 5px; bottom:0px; z-index: -1;" ></p>
+</div>
+
+<div id="video-wrapper-5" class="video-wrapper">
+  <div     id='video5'  >   
+    <a id="a5" href="#" role='button'></a>
+
+ </div>
+ <p id="title5" style="color:red; position: relative; height: 5px; bottom:0px; z-index: -1; "></p>
+</div>
+         <div id="video-wrapper-1" class='video_div1'>
+            <div   class="video_changable"  id='video1'>
+              <a id="a1" href="#" role='button'></a>
           </div>
         </div>
         </div>
+        </div>
+      
+
+        
+
+          
+      
+          <div class="video-wrapper">
+            <div id="root"  >  </div>
+            </div>
+        
         <div id="HangUpCall">
           <input type="image" src="hang_up.png" name="" class="" id="hang_up2" />          
          </div>
 
-      <div id="videotext"></div>
-      <a  id="ShareStory" href="usermedia.html">ShareStory</a>
-      <button  id="uploadvideo" >upload</button>
+         <div id="HangUpCall">
+          <input type="image" src="hang_up.png" name="" class="" id="hang_up2-phone" />          
+         </div>
+     
+      
+       
 
-  
-   </div>
-    
+        
+
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -85,10 +297,256 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-   
 
-    <script src="../src/vimeo.js-master/example/upload.js" type="module"></script>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-  </body>
+
+
+
+
+
+
+
+
+      <script type="text/javascript" >
+        
+      let constraintObj = { 
+          audio: true, 
+          video: { 
+              facingMode: "user", 
+              width: { min: 640, ideal: 1280, max: 1920 },
+              height: { min: 480, ideal: 720, max: 1080 } 
+          } 
+      }; 
+      // width: 1280, height: 720  -- preference only
+      // facingMode: {exact: "user"}
+      // facingMode: "environment"
+      
+      //handle older browsers that might implement getUserMedia in some way
+      if (navigator.mediaDevices === undefined) {
+          navigator.mediaDevices = {};
+          navigator.mediaDevices.getUserMedia = function(constraintObj) {
+              let getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+              if (!getUserMedia) {
+                  return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
+              }
+              return new Promise(function(resolve, reject) {
+                  getUserMedia.call(navigator, constraintObj, resolve, reject);
+              });
+          }
+      }else{
+          navigator.mediaDevices.enumerateDevices()
+          .then(devices => {
+              devices.forEach(device=>{
+                  console.log(device.kind.toUpperCase(), device.label);
+                  //, device.deviceId
+              })
+          })
+          .catch(err=>{
+              console.log(err.name, err.message);
+          })
+      }
+
+      navigator.mediaDevices.getUserMedia(constraintObj)
+      .then(function(mediaStreamObj) {
+          //connect the media stream to the first video element
+          let video = document.getElementById('vid1');
+          if ("srcObject" in video) {
+              video.srcObject = mediaStreamObj;
+          } else {
+              //old version
+              video.src = window.URL.createObjectURL(mediaStreamObj);
+          }
+          
+          video.onloadedmetadata = function(ev) {
+              //show in the video element what is being captured by the webcam
+              video.play();
+          };
+          
+          //add listeners for saving video/audio
+          let start = document.getElementById('btnStart');
+          let stop = document.getElementById('btnStop');
+          let vidSave = document.getElementById('vid2');
+          let uploadvid = document.getElementById('uploadvideo')
+          let mediaRecorder = new MediaRecorder(mediaStreamObj);
+          let chunks = [];
+          let blob = new Blob;
+          
+          start.addEventListener('click', (ev)=>{
+              mediaRecorder.start();
+              console.log(mediaRecorder.state);
+          })
+          stop.addEventListener('click', (ev)=>{
+              mediaRecorder.stop();
+              console.log(mediaRecorder.state);
+          });
+          mediaRecorder.ondataavailable = function(ev) {
+              chunks.push(ev.data);
+          }
+          mediaRecorder.onstop = (ev)=>{
+              videoblob = new Blob(chunks, { 'type' : 'video/mp4;' });
+              console.log(blob);
+              console.log(blob.chunks);
+              chunks = [];
+              console.log(chunks);
+
+              let videoURL = window.URL.createObjectURL(videoblob);
+              console.log(videoURL);
+
+              vidSave.src = videoURL;
+
+          }
+
+          uploadvid.addEventListener('click', (ev)=>{
+
+
+          new VimeoUpload({
+              name: document.getElementById('videoName').value,
+              description: document.getElementById('videoDescription').value,
+              file: videoblob,
+              token: "c058529c99ced7dbf77ff7c773a0522b",
+              onError: function(data) {
+                  showMessage('<strong>Error</strong>: ' + JSON.parse(data).error, 'danger')
+              },
+              onProgress: function(data) {
+                  updateProgress(data.loaded / data.total)
+              },
+              onComplete: function(videoId, index) {
+                  var url = 'https://vimeo.com/' + videoId
+
+                  if (index > -1) {
+                      /* The metadata contains all of the uploaded video(s) details see: https://developer.vimeo.com/api/endpoints/videos#/{video_id} */
+                      url = this.metadata[index].link //
+
+                      /* add stringify the json object for displaying in a text area */
+                      var pretty = JSON.stringify(this.metadata[index], null, 2)
+
+                      console.log(pretty) /* echo server data */
+                  }
+
+                  showMessage('<strong>Upload Successful</strong>: check uploaded video @ <a href="' + url + '">' + url + '</a>. Open the Console for the response details.')
+              }
+            }).upload()
+
+
+             function showMessage(html, type) {
+              /* hide progress bar */
+              document.getElementById('progress-container').style.display = 'none'
+
+              /* display alert message */
+              var element = document.createElement('div')
+              element.setAttribute('class', 'alert alert-' + (type || 'success'))
+              element.innerHTML = html
+              results.appendChild(element)
+          }
+          
+          function handleDragOver(evt) {
+          evt.stopPropagation()
+          evt.preventDefault()
+          evt.dataTransfer.dropEffect = 'copy'
+      }
+
+      /**
+       * Updat progress bar.
+       */
+      function updateProgress(progress) {
+          progress = Math.floor(progress * 100)
+          var element = document.getElementById('progress')
+          element.setAttribute('style', 'width:' + progress + '%')
+          element.innerHTML = '&nbsp;' + progress + '%'
+      }
+      /**
+       * Wire up drag & drop listeners once page loads
+       */
+      document.addEventListener('DOMContentLoaded', function() {
+          var dropZone = document.getElementById('drop_zone')
+          var browse = document.getElementById('browse')
+          dropZone.addEventListener('dragover', handleDragOver, false)
+          dropZone.addEventListener('drop', handleFileSelect, false)
+          browse.addEventListener('change', handleFileSelect, false)
+      })
+
+
+  })
+
+      })
+      .catch(function(err) { 
+          console.log(err.name, err.message); 
+      });
+
+
+      var SDown = false;
+      var SUp = false;
+      var VidoneDown = false;
+      var VidoneUP = false;
+      var Start = document.getElementById("btnStart");
+      var Stop = document.getElementById("btnStop");
+      var VideoRecording = document.getElementById("vid1");
+      var RecordedVideo = document.getElementById("vid2");
+
+      var StartDownFunction = (function() {
+  return function() {
+      if (!SDown) {
+          SDown = true;
+document.getElementById("btnStart").style.zIndex = "3";
+document.getElementById("btnStop").style.zIndex = "4";
+document.getElementById("vid1").style.zIndex = "1";
+document.getElementById("vid2").style.zIndex = "0";
+var SDown = false;
+      }
+  };
+})();
+
+Start.addEventListener("click", function() {
+  StartDownFunction();
+})
+
+var StartUpFunction = (function() {
+  return function() {
+      if (!SUp) {
+          SUp = true;
+document.getElementById("btnStart").style.zIndex = "4";
+document.getElementById("btnStop").style.zIndex = "3";
+document.getElementById("vid1").style.zIndex = "0";
+document.getElementById("vid2").style.zIndex = "1";
+var SUp = false;
+
+      }
+  };
+})();
+
+Stop.addEventListener("click", function() {
+  StartUpFunction();
+})
+
+</script>
+ 
+      
+     
+
+
+      
+      
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/websemantics/bragit/0.1.2/bragit.js"></script>
+<script type="text/javascript" src="./vimeo-upload.js"></script>
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-60970e59ce6cf0d0"></script>
+
+
+
+<script src="jquery.min.js"></script>
+  <script src="popper.js"></script>
+  <script src="bootstrap.min.js"></script>
+  <script src="jquery.validate.min.js"></script>
+  <script src="main.js"></script>
+
+</body>
 
 </html>

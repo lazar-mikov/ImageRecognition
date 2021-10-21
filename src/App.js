@@ -7,9 +7,9 @@ import { nextFrame } from "@tensorflow/tfjs";
 // 2. TODO - Import drawing utility here
 // e.g. import { drawRect } from "./utilities";
 import {drawRect} from "./utilities"; 
-import Share from './share';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Navigation from './Navigation';
+import ReactGa from "react-ga";
 
 
 
@@ -22,6 +22,12 @@ import Navigation from './Navigation';
 function App() {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
+
+  //google analytics
+  useEffect(() => {
+    ReactGa.initialize("G-5EDSBT4HE8")
+    ReactGa.pageview('/')
+    }, [])
   
   // Main function
   const runCoco = async () => {

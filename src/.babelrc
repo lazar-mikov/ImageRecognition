@@ -1,0 +1,6 @@
+// vim: set ft=json5:
+{
+	"presets": [
+		["@babel/preset-env", {"modules": false}]
+	]
+}

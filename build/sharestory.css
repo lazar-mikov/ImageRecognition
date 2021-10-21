@@ -1,0 +1,68 @@
+#btnStart{
+    position: fixed;
+      top: 90%;
+      right: 40%;
+      z-index: 4;
+      width: 20%;
+      -webkit-box-shadow: 0 8px 6px -6px #333;
+      -moz-box-shadow: 0 8px 6px -6px #333;
+      box-shadow: 0 8px 6px -6px #333;
+}
+
+#btnStop{
+    position: fixed;
+      top: 90%;
+      right: 40%;
+      z-index: 3;
+      width: 20%;
+      -webkit-box-shadow: 0 8px 6px -6px #333;
+      -moz-box-shadow: 0 8px 6px -6px #333;
+      box-shadow: 0 8px 6px -6px #333;
+}
+
+#vid1{
+    position: fixed;
+    top: 5%;
+    left: 14%;
+    z-index: 1;
+    width: 70%;
+    color: #ffffff;
+    -webkit-box-shadow: 0 8px 6px -6px #333;
+    -moz-box-shadow: 0 8px 6px -6px #333;
+    box-shadow: 0 8px 6px -6px #333;
+}
+
+#vid2{
+    position: fixed;
+    top: 5%;
+   left: 14%;
+    z-index: 0;
+    width: 70%;
+    color: #ffffff;
+    -webkit-box-shadow: 0 8px 6px -6px #333;
+    -moz-box-shadow: 0 8px 6px -6px #333;
+    box-shadow: 0 8px 6px -6px #333;
+}
+
+#uploadvideo{
+    position: fixed;
+    top: 90%;
+    right: 70%;
+    z-index: 50000000000;
+    width: 20%;
+    -webkit-box-shadow: 0 8px 6px -6px #333;
+    -moz-box-shadow: 0 8px 6px -6px #333;
+    box-shadow: 0 8px 6px -6px #333; 
+}
+
+#main{
+    position: fixed;
+    top: 5%;
+    left: 14%;
+    z-index: 1;
+    width: 20px;
+    color: #ffffff;
+    -webkit-box-shadow: 0 8px 6px -6px #333;
+    -moz-box-shadow: 0 8px 6px -6px #333;
+    box-shadow: 0 8px 6px -6px #333;
+}
